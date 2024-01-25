@@ -23,6 +23,10 @@ public class ApplicationHW2 {
         }
         sumOfArrayElements(m);
 
+        //3
+        int[] ar1 = new int[105];
+        int numb = -3;
+        fillArray(numb, ar1);
 
     }
 
@@ -43,6 +47,14 @@ public class ApplicationHW2 {
             }
         }
         System.out.println("Сумма = " + sumAll);
+    }
+
+    //3
+    public static void fillArray(int a, int[] ar) {
+        for (int i = 0; i < ar.length; i++) {
+            ar[i] = a;
+        }
+        System.out.println(Arrays.toString(ar));
     }
 }
 
