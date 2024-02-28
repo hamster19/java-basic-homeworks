@@ -1,13 +1,13 @@
 package ru.gabbasova.java.basic.homeworks.homework4;
 
 public class Box {
-    private float length = 0;
-    private float height = 0;
-    private float width = 0;
+    private float length; // for default = 0
+    private float height;
+    private float width;
     private String color;
 
-    private byte flagOpen = 0; // 0-close, 1-open
-    private byte flagPut = 0; //0-out, 1-in
+    private boolean flagOpen; // 0-close, 1-open; for default = false
+    private boolean flagPut; //0-out, 1-in
 
     public Box(float length, float height, float width, String color) {
         this.length = length;
@@ -48,7 +48,7 @@ public class Box {
     }
 
     public void setColor( String color) {
-        if (this.color == color) {
+        if (this.color.equals(color) ) { // String type compares by using method equals()
             System.out.println("Коробка уже покрашена! Цвет: " + this.color);
         } else {
             this.color = color;
@@ -56,51 +56,47 @@ public class Box {
         }
     }
 
-    public byte openBox() {
-        if (flagOpen == 1) {
+    public void openBox() {
+        if (flagOpen) {
             System.out.println("Коробка уже открыта.");
         } else {
-            flagOpen = 1;
+            flagOpen = true;
             System.out.println("Коробка открыта.");
         }
-        return flagOpen;
     }
 
-    public byte closeBox() {
-        if (flagOpen == 1) {
-            flagOpen = 0;
+    public void closeBox() {
+        if (flagOpen) { //flagOpen == true
+            flagOpen = false;
             System.out.println("Коробка закрыта.");
         } else {
             System.out.println("Коробка уже закрыта.");
         }
-        return flagOpen;
     }
 
-    public byte putInBox() {
-        if (flagOpen == 0) {
+    public void putInBox() {
+        if (!flagOpen) { //flagOpen == false
             System.out.println("Коробка закрыта. Чтобы положить предмет, откройте коробку.");
         } else {
-            if (flagPut == 0) {
-                flagPut = 1;
+            if (!flagPut) {
+                flagPut = true;
                 System.out.println("Предмет в коробке.");
             } else {
                 System.out.println("В коробке нет места. Выложите предмет.");
             }
         }
-        return flagPut;
     }
 
-    public byte putOutBox() {
-        if (flagOpen == 0) {
+    public void putOutBox() {
+        if (!flagOpen) {
             System.out.println("Коробка закрыта. Чтобы выложить предмет, откройте коробку.");
         } else {
-            if (flagPut == 0) {
-                //flagPut = 1;
+            if (!flagPut) {
                 System.out.println("Предмета в коробке нет.");
             } else {
+                flagPut = false;
                 System.out.println("Предмет выкинули из коробки. Коробка пустая.");
             }
         }
-        return flagPut;
     }
 }

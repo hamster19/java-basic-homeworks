@@ -37,7 +37,7 @@ public class User {
     }
 
     public void info() {
-        System.out.println("ФИО: " + surname + " " + name + " " + lastname + "\n" + "Год рождения: "
-                + yearOfBirth + "\n" + "e-mail: " + email);
+        System.out.println(String.format("ФИО: %s %s %s\n Год рождения: %d \n e-mail: %s", surname, name, lastname, yearOfBirth, email));
     }
+
 }
